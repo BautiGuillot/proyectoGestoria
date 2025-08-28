@@ -1,0 +1,14 @@
+---
+const {
+  year = new Date().getFullYear(),
+  empresa = "Gestoría Online",
+  contacto = "correo@tudominio.com",
+  telefono = "+54 9 11 1234 5678"
+} = Astro.props;
+---
+<footer class="bg-gray-800 text-white py-8 px-4 mt-10">
+  <div class="container mx-auto text-center">
+    <p>&copy; {year} {empresa}. Todos los derechos reservados.</p>
+    <p class="text-sm mt-2">Contacto: {contacto} | Teléfono: {telefono}</p>
+  </div>
+</footer>
