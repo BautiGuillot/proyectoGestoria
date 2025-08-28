@@ -23,70 +23,14 @@ import Footer from '../components/Footer.astro'
 
   <Navbar server:defer />
 
-  <header class="bg-blue-600 text-white py-20 px-4">
-    <div class="container mx-auto text-center">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Simplifica tus Trámites</h1>
-      <p class="text-xl md:text-2xl mb-8">Gestoría profesional para trámites vehiculares y personales.</p>
-      <a href="https://wa.me/tunumerodetelefono?text=Hola%2C%20quisiera%20consultar%20por%20un%20tr%C3%A1mite." 
-         class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300">
-        Contactar por WhatsApp
-      </a>
-    </div>
-  </header>
-
-  <section id="acerca-de" class="py-16 px-4">
-    <div class="container mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Acerca de Nosotros</h2>
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-1/2">
-          <p class="text-gray-700 mb-4">
-            Somos un equipo dedicado a facilitar la gestión de trámites complejos. Nuestra experiencia nos permite ofrecerte soluciones rápidas y transparentes, ahorrándote tiempo y preocupaciones.
-          </p>
-          <p class="text-gray-700">
-            Nuestra misión es brindarte un servicio de confianza, con la atención personalizada que necesitas para cada situación.
-          </p>
-        </div>
-        <div class="md:w-1/2">
-          <img src="https://via.placeholder.com/600x400" alt="Foto del equipo o de la oficina" class="rounded-lg shadow-md w-full">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <ContactForm />
-
-  <section id="servicios" class="bg-white py-16 px-4">
-    <div class="container mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Nuestros Servicios</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-          <h3 class="text-xl font-semibold mb-2">Trámites de Autos</h3>
-          <p class="text-gray-700">Transferencias, multas, bajas, altas y más. Resoluciones rápidas y efectivas.</p>
-        </div>
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-          <h3 class="text-xl font-semibold mb-2">Asesoría Comercial</h3>
-          <p class="text-gray-700">Ayudamos con la constitución de sociedades y permisos comerciales.</p>
-        </div>
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-          <h3 class="text-xl font-semibold mb-2">Documentación Personal</h3>
-          <p class="text-gray-700">Gestión de partidas de nacimiento, certificados de antecedentes, etc.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="bg-gray-800 text-white py-8 px-4 mt-10">
-    <div class="container mx-auto text-center">
-      <p>&copy; {new Date().getFullYear()} Gestoría Online. Todos los derechos reservados.</p>
-      <p class="text-sm mt-2">Contacto: correo@tudominio.com | Teléfono: +54 9 11 1234 5678</p>
-    </div>
-  </footer>
   <HeroHeader />
 
   <AcercaDeNosotros />
 
   <Servicios />
 
+  <ContactForm />
+  
   <Footer />
 
 </body>
