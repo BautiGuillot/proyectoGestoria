@@ -1,0 +1,130 @@
+---
+// src/components/ContactForm.astro
+---
+
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">Solicitar Información</h2>
+  <form class="space-y-6" id="contactForm">
+    <!-- Nombre -->
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    </div>
+
+    <!-- Teléfono -->
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Número de teléfono</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    </div>
+
+    <!-- Patente -->
+    <div>
+      <label for="license" class="block text-sm font-medium text-gray-700 mb-1">Patente del vehículo</label>
+      <input
+        type="text"
+        id="license"
+        name="license"
+        required
+        placeholder="Ej: AA123BB"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent uppercase"
+      />
+    </div>
+
+    <!-- Tipo de consulta (Radio Buttons) -->
+    <div>
+      <span class="block text-sm font-medium text-gray-700 mb-2">Tipo de consulta</span>
+      <div class="space-y-2">
+        <label class="flex items-center">
+          <input
+            type="radio"
+            name="queryType"
+            value="transferencia"
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+            checked
+          />
+          <span class="ml-2 text-gray-700">Transferencia de vehículo</span>
+        </label>
+        <label class="flex items-center">
+          <input
+            type="radio"
+            name="queryType"
+            value="otra"
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+          />
+          <span class="ml-2 text-gray-700">Otra consulta</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Mensaje -->
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje (opcional)</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="3"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      ></textarea>
+    </div>
+
+    <!-- Botón de envío -->
+    <div>
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+      >
+        Enviar consulta
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!e.target) return;
+    
+    // @ts-expect-error
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) throw new Error('Error en la respuesta del servidor');
+      
+      const result = await response.json();
+      alert('¡Consulta enviada con éxito! Nos pondremos en contacto contigo pronto.');
+      e.target.reset();
+      
+    } catch (error) {
+      console.log('Error:', error);
+      alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar consulta';
+    }
+  });
+</script>
