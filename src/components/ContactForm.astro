@@ -99,6 +99,7 @@
     // @ts-expect-error
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    // @ts-expect-error
     const submitBtn = e.target.querySelector('button[type="submit"]');
 
     try {
@@ -117,6 +118,7 @@
       
       const result = await response.json();
       alert('¡Consulta enviada con éxito! Nos pondremos en contacto contigo pronto.');
+    // @ts-expect-error
       e.target.reset();
       
     } catch (error) {
