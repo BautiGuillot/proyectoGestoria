@@ -1,6 +1,7 @@
 ---
 // Importa cualquier componente o script que necesites aquí.
 import '../styles/global.css'
+import Header from '../components/Header.astro'
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -14,6 +15,8 @@ import '../styles/global.css'
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
+
+  <Header server:defer />
 
   <header class="bg-blue-600 text-white py-20 px-4">
     <div class="container mx-auto text-center">

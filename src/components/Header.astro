@@ -1,0 +1,85 @@
+---
+const navLinks = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Servicios', href: '#servicios' },
+  { name: 'Quiénes Somos', href: '#quienes-somos' },
+  { name: 'Contacto', href: '#contacto' },
+];
+---
+
+<header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="text-2xl font-bold text-blue-600">
+      <a href="/">Gestoría</a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex space-x-8">
+      {
+        navLinks.map((link) => (
+          <a 
+            href={link.href} 
+            class="text-gray-700 hover:text-blue-600 transition-colors duration-300"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a 
+      href="https://wa.me/tunumerodetelefono?text=Hola%2C%20quisiera%20consultar%20por%20un%20tr%C3%A1mite." 
+      class="hidden md:block bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300"
+    >
+      Contactar
+    </a>
+
+    <!-- Mobile menu button -->
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+    <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+      {
+        navLinks.map((link) => (
+          <a 
+            href={link.href} 
+            class="text-gray-700 hover:text-blue-600 py-2 transition-colors duration-300"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+      <a 
+        href="https://wa.me/tunumerodetelefono?text=Hola%2C%20quisiera%20consultar%20por%20un%20tr%C3%A1mite." 
+        class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-full text-center transition-colors duration-300"
+      >
+        Contactar por WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Add padding to the top of the body to account for fixed header -->
+<div class="pt-20"></div>
+
+<script>
+  // Mobile menu toggle functionality
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
