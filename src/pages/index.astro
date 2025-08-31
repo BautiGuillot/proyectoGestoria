@@ -47,7 +47,12 @@ import ContactFormV2 from '../components/ContactFormV2.astro';
   <FooterV2 />
   <Footer />
 
-  <script is:inline type="module" src="/src/scripts/global.js"></script>
+  <script>
+    import { initAnimations } from "../scripts/observer.js";
+    document.addEventListener("DOMContentLoaded", () => {
+      initAnimations();
+    });
+  </script>
 
 </body>
 </html>
