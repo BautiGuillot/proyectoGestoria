@@ -1,0 +1,147 @@
+---
+import { Send, User, FileText, Car, Phone } from '@lucide/astro';
+import Button from './ui/Button.astro';
+import Input from './ui/Input.astro';
+import TextArea from './ui/TextArea.astro';
+import Label from './ui/Label.astro';
+import Card from './ui/Card.astro';
+import CardHeader from './ui/CardHeader.astro';
+import CardTitle from './ui/CardTitle.astro';
+import CardDescription from './ui/CardDescription.astro';
+import CardContent from './ui/CardContent.astro';
+---
+
+<section class="py-24 px-4 bg-gray-50">
+  <div class="max-w-4xl mx-auto">
+    <div
+      data-anim="fade-in-up"
+      class="opacity-0 translate-y-8 text-center mb-12"
+    >
+      <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+        Consulte su Caso
+      </h2>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Complete el formulario y nuestros expertos analizarán su multa sin costo.
+      </p>
+    </div>
+
+    <div
+      data-anim="fade-in-up"
+      class="opacity-0 translate-y-8 text-center mb-12"
+    >
+      <Card class="shadow-2xl border-gray-200 bg-white">
+        <CardHeader class="text-center pb-8">
+          <CardTitle class="text-2xl font-bold text-slate-900">
+            Información de su Multa
+          </CardTitle>
+          <CardDescription class="text-lg text-slate-600">
+            Todos los datos son confidenciales y seguros.
+          </CardDescription>
+        </CardHeader>
+        
+        <CardContent>
+          <form id="contactFormV2" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <Label htmlFor="name" class="text-sm font-medium text-slate-700 flex items-center gap-2">
+                  <User class="w-4 h-4" />
+                  Nombre Completo *
+                </Label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Ingrese su nombre completo"
+                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg"
+                  required
+                />
+              </div>
+              <div class="space-y-2">
+                <Label htmlFor="license" class="text-sm font-medium text-slate-700 flex items-center gap-2">
+                  <Car class="w-4 h-4" />
+                  Patente del Vehículo
+                </Label>
+                <Input
+                  id="license"
+                  name="license"
+                  type="text"
+                  placeholder="Ej: ABC123"
+                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg uppercase"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                <Label htmlFor="dni" class="text-sm font-medium text-slate-700 flex items-center gap-2">
+                  <FileText class="w-4 h-4" />
+                  DNI
+                </Label>
+                <Input
+                  id="dni"
+                  name="dni"
+                  type="text"
+                  placeholder="Número de documento"
+                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg"
+                />
+              </div>
+                <div class="space-y-2">
+                <Label htmlFor="phone" class="text-sm font-medium text-slate-700 flex items-center gap-2">
+                  <Phone class="w-4 h-4" />
+                  Número de teléfono *
+                </Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="su@email.com"
+                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <Label htmlFor="message" class="text-sm font-medium text-slate-700">
+                Describa su Consulta *
+              </Label>
+              <TextArea
+                id="message"
+                name="message"
+                placeholder="Cuéntenos sobre su multa: tipo de infracción, monto, fecha, etc."
+                class="min-h-[120px] border-gray-300 focus:border-blue-500 rounded-lg resize-none"
+                required
+              />
+            </div>
+
+            <div class="pt-4 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]">
+              <Button
+                type="submit"
+                size="lg"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 text-lg rounded-lg shadow-lg flex items-center justify-center gap-3"
+              >
+                <Send class="w-5 h-5" />
+                Enviar Consulta Gratuita
+              </Button>
+            </div>
+          </form>
+
+          <div class="mt-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
+            <div class="text-center">
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">
+                ✅ Consulta 100% Gratuita
+              </h3>
+              <p class="text-blue-700">
+                No cobramos por analizar su caso. Solo abona si logramos reducir su multa.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+<script>
+  import { handleSubmitForm } from "../scripts/contactFormSubmit";
+  handleSubmitForm();
+</script>

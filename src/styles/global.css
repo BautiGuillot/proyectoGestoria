@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@config "../../tailwind.config.js";
+
+:root {
+  --background: #f3f4f6;
+  --foreground: #FFFFFF;
+
+  --primary: #91A287;
+  --primary-foreground: #28342F;
+  
+  --secondary: #B0C5A4;
+  --secondary-foreground: #FFFFFF;
+}

@@ -1,0 +1,12 @@
+---
+// src/components/ui/CardDescription.astro
+const { class: className, ...props } = Astro.props;
+---
+
+<p
+  class:list={[
+    "text-sm text-muted-foreground",
+    className
+  ]}
+  {...props}
+/>

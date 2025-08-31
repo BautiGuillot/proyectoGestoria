@@ -1,0 +1,14 @@
+---
+// src/components/ui/CardHeader.astro
+const { class: className, ...props } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex flex-col space-y-1.5 p-6",
+    className
+  ]}
+  {...props}
+>
+  <slot />
+</div>

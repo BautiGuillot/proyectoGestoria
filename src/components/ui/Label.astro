@@ -1,0 +1,14 @@
+---
+// src/components/ui/Label.astro
+
+const { htmlFor, class: className, ...props } = Astro.props;
+const baseStyles = "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70";
+---
+
+<label
+  for={htmlFor}
+  class:list={[baseStyles, className]}
+  {...props}
+>
+  <slot />
+</label>

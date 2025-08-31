@@ -1,0 +1,14 @@
+---
+// src/components/ui/Card.astro
+const { class: className, ...props } = Astro.props;
+---
+
+<div
+  class:list={[
+    "rounded-lg border bg-card text-card-foreground shadow-sm",
+    className
+  ]}
+  {...props}
+>
+  <slot />
+</div>

@@ -1,0 +1,14 @@
+---
+// src/components/ui/CardContent.astro
+const { class: className, ...props } = Astro.props;
+---
+
+<div
+  class:list={[
+    "p-6 pt-0",
+    className
+  ]}
+  {...props}
+>
+  <slot />
+</div>

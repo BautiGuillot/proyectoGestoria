@@ -7,6 +7,12 @@ import HeroHeader from '../components/HeroHeader.astro'
 import AcercaDeNosotros from '../components/AcercaDeNosotros.astro'
 import Servicios from '../components/Servicios.astro'
 import Footer from '../components/Footer.astro'
+import AboutSection from '../components/AboutSection.astro';
+import AboutSectionV2 from '../components/AboutSectionV2.astro';
+import FooterV2 from '../components/FooterV2.astro';
+import HeroSection from '../components/HeroSection.astro';
+import HowItWorksSection from '../components/HowItWorksSection.astro';
+import ContactFormV2 from '../components/ContactFormV2.astro';
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -23,15 +29,25 @@ import Footer from '../components/Footer.astro'
 
   <Navbar server:defer />
 
+  <HeroSection />
   <HeroHeader />
+
+  <HowItWorksSection />
+
+  <AboutSection />
+  <AboutSectionV2 />
 
   <AcercaDeNosotros />
 
   <Servicios />
 
+  <ContactFormV2 />
   <ContactForm />
   
+  <FooterV2 />
   <Footer />
+
+  <script is:inline type="module" src="/src/scripts/global.js"></script>
 
 </body>
 </html>
