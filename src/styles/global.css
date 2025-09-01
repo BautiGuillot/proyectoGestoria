@@ -2,12 +2,41 @@
 @config "../../tailwind.config.js";
 
 :root {
-  --background: #f3f4f6;
-  --foreground: #FFFFFF;
+  --background: 0 0% 100%; /* White */
+  --foreground: 220 10% 15%; /* Dark Slate */
+  --card: 0 0% 100%;
+  --card-foreground: 220 10% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 10% 15%;
+  --primary: 150 15% 50%; /* #91A287 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 140 20% 70%; /* #B0C5A4 */
+  --secondary-foreground: 220 10% 15%;
+  --muted: 220 10% 90%;
+  --muted-foreground: 220 10% 40%;
+  --accent: 150 15% 50%; /* #91A287 */
+  --accent-foreground: 220 10% 15%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 10% 80%;
+  --input: 220 10% 80%;
+  --ring: 150 15% 50%;
+  --radius: 0.5rem;
 
-  --primary: #91A287;
-  --primary-foreground: #28342F;
-  
-  --secondary: #B0C5A4;
-  --secondary-foreground: #FFFFFF;
+  /* Custom colors from palette */
+  --color-dark-green: 220 10% 15%; /* #28342F */
+  --color-muted-green: 150 15% 50%; /* #91A287 */
+  --color-light-green: 140 20% 70%; /* #B0C5A4 */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-background text-foreground;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--color-dark-green)) 0%, hsl(var(--color-muted-green)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

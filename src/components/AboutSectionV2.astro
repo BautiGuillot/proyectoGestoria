@@ -16,10 +16,10 @@ const features = [
       class="text-center mb-16 opacity-0 translate-y-8"
       data-anim="fade-in-up"
     >
-      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent mb-6">
+      <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
         Sobre Nosotros
       </h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+      <p class="text-lg text-[hsl(var(--color-dark-green))]/70 max-w-3xl mx-auto leading-relaxed">
         Somos una gestora legal especializada en la reducción de multas de tránsito, comprometidos con brindar soluciones efectivas y personalizadas para cada cliente.
       </p>
     </div>
@@ -39,16 +39,16 @@ const features = [
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {features.map((feature) => (
           <div
-            class="bg-gray-50 rounded-lg p-6 border border-gray-200 opacity-0 translate-y-8"
+            class="bg-[hsl(var(--color-light-green))]/10 rounded-lg p-6 border border-[hsl(var(--color-light-green))]/30 opacity-0 translate-y-8"
             data-anim="fade-in-up"
           >
-            <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <div class="bg-[hsl(var(--color-muted-green))] text-white w-12 h-12 rounded-lg flex items-center justify-center mb-4">
               <feature.icon class="w-6 h-6" />
             </div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2">
+            <h3 class="text-lg font-bold text-[hsl(var(--color-dark-green))] mb-2">
               {feature.title}
             </h3>
-            <p class="text-slate-600 leading-relaxed text-sm">
+            <p class="text-[hsl(var(--color-dark-green))]/70 leading-relaxed text-sm">
               {feature.description}
             </p>
           </div>
@@ -58,25 +58,25 @@ const features = [
 
     <!-- CTA -->
     <div
-      class="mt-20 bg-slate-800 rounded-lg p-12 text-center text-white opacity-0 translate-y-8"
+      class="mt-20 bg-[hsl(var(--color-dark-green))] rounded-lg p-12 text-center text-white opacity-0 translate-y-8"
       data-anim="fade-in-up"
     >
       <h3 class="text-3xl font-bold mb-4">¿Por qué elegirnos?</h3>
-      <p class="text-lg text-slate-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+      <p class="text-lg text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
         Nuestro compromiso es simple: reducir el impacto económico de sus multas utilizando todos los recursos legales disponibles. No cobramos si no obtenemos resultados.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         <div>
-          <p class="text-4xl font-bold text-blue-400 mb-2">Sin Costo</p>
-          <p class="text-slate-200">Si no ganamos su caso</p>
+          <p class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">Sin Costo</p>
+          <p class="text-white/90">Si no ganamos su caso</p>
         </div>
         <div>
-          <p class="text-4xl font-bold text-blue-400 mb-2">Asesoría</p>
-          <p class="text-slate-200">Gratuita inicial</p>
+          <p class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">Asesoría</p>
+          <p class="text-white/90">Gratuita inicial</p>
         </div>
         <div>
-          <p class="text-4xl font-bold text-blue-400 mb-2">Garantía</p>
-          <p class="text-slate-200">Total en el servicio</p>
+          <p class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">Garantía</p>
+          <p class="text-white/90">Total en el servicio</p>
         </div>
       </div>
     </div>

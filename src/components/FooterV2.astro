@@ -1,64 +1,67 @@
 ---
 import { Phone, Mail, MapPin, Clock } from '@lucide/astro';
-
 ---
 
-<footer class="bg-slate-800 text-slate-300 py-16">
+<footer class="bg-[hsl(var(--color-dark-green))] text-slate-200 py-16">
   <div class="max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       
+      <!-- Branding -->
       <div class="space-y-4">
         <span class="text-2xl font-bold text-white">
-          Gestora Multas
+          Gestion Multas
         </span>
-        <p class="leading-relaxed text-slate-400">
+        <p class="leading-relaxed text-slate-300">
           Especialistas en la defensa de sus derechos frente a multas de tránsito. Profesionalismo y eficacia.
         </p>
       </div>
 
+      <!-- Servicios -->
       <div class="space-y-4">
         <span class="text-xl font-bold text-white">Servicios</span>
         <ul class="space-y-2">
-          <li><a href="#" class="hover:text-white transition-colors">Reducción de multas</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Descargos de infracciones</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Recursos administrativos</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Asesoría legal</a></li>
+          <li><a href="#" class="hover:text-[hsl(var(--color-light-green))] transition-colors">Reducción de multas</a></li>
+          <li><a href="#" class="hover:text-[hsl(var(--color-light-green))] transition-colors">Descargos de infracciones</a></li>
+          <li><a href="#" class="hover:text-[hsl(var(--color-light-green))] transition-colors">Recursos administrativos</a></li>
+          <li><a href="#" class="hover:text-[hsl(var(--color-light-green))] transition-colors">Asesoría legal</a></li>
         </ul>
       </div>
       
+      <!-- Contacto -->
       <div class="space-y-4">
         <span class="text-xl font-bold text-white">Contacto</span>
         <div class="space-y-3">
           <div class="flex items-center gap-3">
-            <Phone class="w-5 h-5 text-blue-400" />
+            <Phone class="w-5 h-5 text-[hsl(var(--color-light-green))]" />
             <span>+54 11 1234-5678</span>
           </div>
           <div class="flex items-center gap-3">
-            <Mail class="w-5 h-5 text-blue-400" />
+            <Mail class="w-5 h-5 text-[hsl(var(--color-light-green))]" />
             <span>info@gestoramultas.com</span>
           </div>
           <div class="flex items-center gap-3">
-            <MapPin class="w-5 h-5 text-blue-400" />
+            <MapPin class="w-5 h-5 text-[hsl(var(--color-light-green))]" />
             <span>Buenos Aires, Argentina</span>
           </div>
         </div>
       </div>
       
+      <!-- Horarios -->
       <div class="space-y-4">
         <span class="text-xl font-bold text-white">Horarios de Atención</span>
         <div class="space-y-3">
           <div class="flex items-start gap-3">
-            <Clock class="w-5 h-5 text-blue-400 mt-1" />
+            <Clock class="w-5 h-5 text-[hsl(var(--color-light-green))] mt-1" />
             <div>
               <span class="block">Lunes a Viernes</span>
-              <span class="text-sm text-slate-400">9:00 - 18:00 hs</span>
+              <span class="text-sm text-slate-300">9:00 - 18:00 hs</span>
             </div>
           </div>
-            <div class="flex items-start gap-3">
-            <Clock class="w-5 h-5 text-blue-400 mt-1" />
+          <div class="flex items-start gap-3">
+            <Clock class="w-5 h-5 text-[hsl(var(--color-light-green))] mt-1" />
             <div>
               <span class="block">Sábados</span>
-              <span class="text-sm text-slate-400">9:00 - 13:00 hs</span>
+              <span class="text-sm text-slate-300">9:00 - 13:00 hs</span>
             </div>
           </div>
         </div>
@@ -66,8 +69,10 @@ import { Phone, Mail, MapPin, Clock } from '@lucide/astro';
 
     </div>
 
-    <div class="border-t border-slate-700 my-8"></div>
+    <!-- Divider -->
+    <div class="border-t border-[hsl(var(--color-muted-green))]/40 my-8"></div>
 
+    <!-- Copyright -->
     <div class="text-center">
       <p class="text-slate-400">
         © 2025 Gestora Multas. Todos los derechos reservados.

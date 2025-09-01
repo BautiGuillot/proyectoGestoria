@@ -11,25 +11,27 @@ import CardDescription from './ui/CardDescription.astro';
 import CardContent from './ui/CardContent.astro';
 ---
 
-<section class="py-24 px-4 bg-gray-50">
+<section class="py-24 px-4 bg-[hsl(var(--color-muted-green))]/10">
   <div class="max-w-4xl mx-auto">
+    <!-- Header -->
     <div
       data-anim="fade-in-up"
       class="opacity-0 translate-y-8 text-center mb-12"
     >
-      <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[hsl(var(--color-light-green))] to-[hsl(var(--color-dark-green))] bg-clip-text text-transparent mb-6">
         Consulte su Caso
       </h2>
-      <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
         Complete el formulario y nuestros expertos analizarán su multa sin costo.
       </p>
     </div>
 
+    <!-- Form -->
     <div
       data-anim="fade-in-up"
       class="opacity-0 translate-y-8 text-center mb-12"
     >
-      <Card class="shadow-2xl border-gray-200 bg-white">
+      <Card class="shadow-2xl border-[hsl(var(--color-muted-green))]/30 bg-white">
         <CardHeader class="text-center pb-8">
           <CardTitle class="text-2xl font-bold text-slate-900">
             Información de su Multa
@@ -41,6 +43,7 @@ import CardContent from './ui/CardContent.astro';
         
         <CardContent>
           <form id="contactFormV2" class="space-y-6">
+            <!-- Nombre y patente -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
                 <Label htmlFor="name" class="text-sm font-medium text-slate-700 flex items-center gap-2">
@@ -52,7 +55,7 @@ import CardContent from './ui/CardContent.astro';
                   name="name"
                   type="text"
                   placeholder="Ingrese su nombre completo"
-                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg"
+                  class="h-12 border-[hsl(var(--color-muted-green))]/40 focus:border-[hsl(var(--color-light-green))] rounded-lg"
                   required
                 />
               </div>
@@ -66,13 +69,14 @@ import CardContent from './ui/CardContent.astro';
                   name="license"
                   type="text"
                   placeholder="Ej: ABC123"
-                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg uppercase"
+                  class="h-12 border-[hsl(var(--color-muted-green))]/40 focus:border-[hsl(var(--color-light-green))] rounded-lg uppercase"
                 />
               </div>
             </div>
 
+            <!-- DNI y teléfono -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-2">
+              <div class="space-y-2">
                 <Label htmlFor="dni" class="text-sm font-medium text-slate-700 flex items-center gap-2">
                   <FileText class="w-4 h-4" />
                   DNI
@@ -82,10 +86,10 @@ import CardContent from './ui/CardContent.astro';
                   name="dni"
                   type="text"
                   placeholder="Número de documento"
-                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg"
+                  class="h-12 border-[hsl(var(--color-muted-green))]/40 focus:border-[hsl(var(--color-light-green))] rounded-lg"
                 />
               </div>
-                <div class="space-y-2">
+              <div class="space-y-2">
                 <Label htmlFor="phone" class="text-sm font-medium text-slate-700 flex items-center gap-2">
                   <Phone class="w-4 h-4" />
                   Número de teléfono *
@@ -94,13 +98,14 @@ import CardContent from './ui/CardContent.astro';
                   id="phone"
                   name="phone"
                   type="tel"
-                  placeholder="su@email.com"
-                  class="h-12 border-gray-300 focus:border-blue-500 rounded-lg"
+                  placeholder="+54 9 11 1234 5678"
+                  class="h-12 border-[hsl(var(--color-muted-green))]/40 focus:border-[hsl(var(--color-light-green))] rounded-lg"
                   required
                 />
               </div>
             </div>
 
+            <!-- Mensaje -->
             <div class="space-y-2">
               <Label htmlFor="message" class="text-sm font-medium text-slate-700">
                 Describa su Consulta *
@@ -109,16 +114,17 @@ import CardContent from './ui/CardContent.astro';
                 id="message"
                 name="message"
                 placeholder="Cuéntenos sobre su multa: tipo de infracción, monto, fecha, etc."
-                class="min-h-[120px] border-gray-300 focus:border-blue-500 rounded-lg resize-none"
+                class="min-h-[120px] border-[hsl(var(--color-muted-green))]/40 focus:border-[hsl(var(--color-light-green))] rounded-lg resize-none"
                 required
               />
             </div>
 
+            <!-- Botón -->
             <div class="pt-4 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]">
               <Button
                 type="submit"
                 size="lg"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 text-lg rounded-lg shadow-lg flex items-center justify-center gap-3"
+                class="w-full bg-[hsl(var(--color-light-green))] hover:bg-[hsl(var(--color-dark-green))] text-white py-4 text-lg rounded-lg shadow-lg flex items-center justify-center gap-3"
               >
                 <Send class="w-5 h-5" />
                 Enviar Consulta Gratuita
@@ -126,12 +132,13 @@ import CardContent from './ui/CardContent.astro';
             </div>
           </form>
 
-          <div class="mt-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
+          <!-- Aviso -->
+          <div class="mt-8 p-6 bg-[hsl(var(--color-light-green))]/10 rounded-lg border border-[hsl(var(--color-light-green))]/40">
             <div class="text-center">
-              <h3 class="text-lg font-semibold text-blue-800 mb-2">
+              <h3 class="text-lg font-semibold text-[hsl(var(--color-dark-green))] mb-2">
                 ✅ Consulta 100% Gratuita
               </h3>
-              <p class="text-blue-700">
+              <p class="text-[hsl(var(--color-muted-green))]">
                 No cobramos por analizar su caso. Solo abona si logramos reducir su multa.
               </p>
             </div>
@@ -141,6 +148,7 @@ import CardContent from './ui/CardContent.astro';
     </div>
   </div>
 </section>
+
 <script>
   import { handleSubmitForm } from "../scripts/contactFormSubmit";
   handleSubmitForm();

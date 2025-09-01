@@ -4,57 +4,56 @@ import { MessageCircle } from '@lucide/astro';
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
   <div class="absolute inset-0 z-0">
-    <img  class="w-full h-full object-cover" alt="Gavel and law book on a wooden desk, signifying justice" src="https://images.unsplash.com/photo-1555374018-13a8994ab246" />
-    <div class="absolute inset-0 bg-slate-800/70"></div>
+    <img  
+      class="w-full h-full object-cover" 
+      alt="Gavel and law book on a wooden desk, signifying justice" 
+      src="https://images.unsplash.com/photo-1555374018-13a8994ab246" 
+    />
+    <!-- Overlay con verde oscuro de la paleta -->
+    <div class="absolute inset-0 bg-[hsl(var(--color-dark-green))]/70"></div>
   </div>
 
   <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-    <div
-        class="opacity-0 -translate-x-8"
-        data-anim="fade-in-up"
-      >
-      <h1 
-        class="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight"
-      >
+    <div class="opacity-0 -translate-x-8" data-anim="fade-in-up">
+      
+      <!-- Título con verde claro -->
+      <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
         Defendemos tus Derechos, Reducimos tus{' '}
-        <span class="text-blue-400">
+        <span class="text-[hsl(var(--color-light-green))]">
           Multas
         </span>
       </h1>
 
+      <!-- Texto con gris suave -->
       <p 
-        class="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed"
+        class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
         data-anim="fade-in-up"
       >
-        Somos un equipo de abogados expertos en derecho de tr谩nsito, dedicados a la gesti贸n y reducci贸n de multas. Protegemos tus intereses con profesionalismo y eficacia.
+        Somos un equipo de abogados expertos en derecho de tránsito, dedicados a la gestión y reducción de multas. Protegemos tus intereses con profesionalismo y eficacia.
       </p>
 
-      <div 
-        class="flex flex-col sm:flex-row gap-6 justify-center items-center"
-        data-anim="fade-in-up"
-      >
+      <!-- Botón con verde medio -->
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center" data-anim="fade-in-up">
         <button 
-          class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
+          class="bg-[hsl(var(--color-muted-green))] hover:bg-[hsl(var(--color-dark-green))] text-white px-8 py-4 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
         >
           <MessageCircle class="w-6 h-6" />
           Contactar por WhatsApp
         </button>
       </div>
 
-      <div
-        class="opacity-0 -translate-y-8 grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
-        data-anim="fade-in-up"
-      >
+      <!-- Métricas -->
+      <div class="opacity-0 -translate-y-8 grid grid-cols-1 md:grid-cols-3 gap-8 mt-16" data-anim="fade-in-up">
         <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20">
-          <div class="text-4xl font-bold text-blue-300 mb-2">95%</div>
+          <div class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">95%</div>
           <div class="text-white">Casos Exitosos</div>
         </div>
         <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20">
-          <div class="text-4xl font-bold text-blue-300 mb-2">24h</div>
-          <div class="text-white">Respuesta R谩pida</div>
+          <div class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">24h</div>
+          <div class="text-white">Respuesta Rápida</div>
         </div>
         <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20">
-          <div class="text-4xl font-bold text-blue-300 mb-2">+1000</div>
+          <div class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">+1000</div>
           <div class="text-white">Clientes Satisfechos</div>
         </div>
       </div>

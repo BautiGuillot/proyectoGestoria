@@ -2,12 +2,6 @@
 // Importa cualquier componente o script que necesites aquí.
 import '../styles/global.css'
 import Navbar from '../components/Navbar.astro'
-import ContactForm from '../components/ContactForm.astro';
-import HeroHeader from '../components/HeroHeader.astro'
-import AcercaDeNosotros from '../components/AcercaDeNosotros.astro'
-import Servicios from '../components/Servicios.astro'
-import Footer from '../components/Footer.astro'
-import AboutSection from '../components/AboutSection.astro';
 import AboutSectionV2 from '../components/AboutSectionV2.astro';
 import FooterV2 from '../components/FooterV2.astro';
 import HeroSection from '../components/HeroSection.astro';
@@ -29,23 +23,23 @@ import ContactFormV2 from '../components/ContactFormV2.astro';
 
   <Navbar server:defer />
 
-  <HeroSection />
-  <HeroHeader />
+  <section id="HeroSection">
+    <HeroSection />
+  </section>
 
-  <HowItWorksSection />
+  <section id="AboutSectionV2">
+    <AboutSectionV2 />
+  </section>
 
-  <AboutSection />
-  <AboutSectionV2 />
+  <section id="HowItWorksSection">
+    <HowItWorksSection />
+  </section>
 
-  <AcercaDeNosotros />
+  <section id="ContactFormV2">
+    <ContactFormV2 />
+  </section>
 
-  <Servicios />
-
-  <ContactFormV2 />
-  <ContactForm />
-  
   <FooterV2 />
-  <Footer />
 
   <script>
     import { initAnimations } from "../scripts/observer.js";
