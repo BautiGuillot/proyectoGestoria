@@ -13,6 +13,7 @@ export default defineConfig({
   env: {
     schema: {
       URL_SUBMIT_FORM: envField.string({ context: "server", access: "secret" }),
+      WSP_URL: envField.string({ context: "client", access: "public" }),
     }
   }
 });

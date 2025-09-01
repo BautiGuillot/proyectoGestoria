@@ -21,12 +21,13 @@ export function handleSubmitForm() {
         body: JSON.stringify(data)
       });
 
-      if (!response.ok) throw new Error('Error en la respuesta del servidor');
-      
-      const result = await response.json();
-      alert('¡Consulta enviada con éxito! Nos pondremos en contacto contigo pronto.');
-    // @ts-expect-error
-      e.target.reset();
+      if (response.status === 200) {
+        alert('¡Consulta enviada con éxito! Nos pondremos en contacto contigo pronto.');
+        // @ts-expect-error
+        e.target.reset();
+      } else {
+        alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.');
+      }
       
     } catch (error) {
       console.log('Error:', error);

@@ -20,6 +20,7 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        lightGreen: 'hsl(var(--color-light-green))',
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)',

@@ -5,6 +5,7 @@ const navLinks = [
   { name: 'Servicios', href: '#HowItWorksSection' },
   { name: 'Contacto', href: '#ContactFormV2' },
 ];
+const WSP_URL = import.meta.env.WSP_URL;
 ---
 
 <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
@@ -30,7 +31,8 @@ const navLinks = [
 
     <!-- WhatsApp Button -->
     <a 
-      href="https://wa.me/tunumerodetelefono?text=Hola%2C%20quisiera%20consultar%20por%20un%20tr%C3%A1mite." 
+      href={WSP_URL}
+      target="_blank"
       class="hidden md:block bg-[hsl(var(--color-dark-green))] hover:bg-[hsl(var(--color-muted-green))] text-white font-medium py-2 px-5 rounded-full transition-colors duration-300 shadow-md"
     >
       Contactar
@@ -60,7 +62,8 @@ const navLinks = [
         ))
       }
       <a 
-        href="https://wa.me/tunumerodetelefono?text=Hola%2C%20quisiera%20consultar%20por%20un%20tr%C3%A1mite." 
+        href={WSP_URL} 
+        target="_blank"
         class="bg-[hsl(var(--color-dark-green))] hover:bg-[hsl(var(--color-muted-green))] text-white font-medium py-2 px-4 rounded-full text-center transition-colors duration-300 shadow-md"
       >
         WhatsApp

@@ -27,7 +27,7 @@ export async function POST({ request }: { request: Request }) {
         });
       }
       return new Response(result, {
-        status: response.status,
+        status: 200,
         headers: {
           'Content-Type': 'application/json'
         }
