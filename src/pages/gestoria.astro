@@ -1,0 +1,337 @@
+---
+import Navbar from '../components/Navbar.astro';
+import FooterV2 from '../components/FooterV2.astro';
+import ContactFormV2 from '../components/ContactFormV2.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css'
+import { Car, Building2, FileText, Scale, MessageCircle, CheckCircle, Clock, Users } from "lucide-astro";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestoría Integral - Servicios Profesionales de Trámites</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Estilos personalizados para la página de gestoría */
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+<Navbar server:defer />
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img  
+      class="w-full h-full object-cover" 
+      alt="Oficina moderna de gestoría con documentos y computadoras" 
+      src="https://images.unsplash.com/photo-1497366216548-37526070297c" 
+    />
+    <!-- Overlay con verde oscuro de la paleta -->
+    <div class="absolute inset-0 bg-[hsl(var(--color-dark-green))]/80"></div>
+  </div>
+
+  <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+    <div class="opacity-0 -translate-x-8" data-anim="fade-in-up">
+      
+      <!-- Título con verde claro -->
+      <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
+        Gestoría{' '}
+        <span class="text-[hsl(var(--color-light-green))]">
+          Integral
+        </span>
+      </h1>
+
+      <!-- Texto con gris suave -->
+      <p 
+        class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mt-6"
+        data-anim="fade-in-up"
+      >
+        Soluciones profesionales para trámites vehiculares, comerciales y personales. 
+        Nos encargamos de todo el proceso para que no te preocupes por nada.
+      </p>
+
+      <!-- Botón con verde medio -->
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8" data-anim="fade-in-up">
+        <a
+          href="#servicios"
+          class="bg-[hsl(var(--color-muted-green))] hover:bg-[hsl(var(--color-dark-green))] text-white px-8 py-4 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
+        >
+          <Car class="w-6 h-6" />
+          Ver Servicios
+        </a>
+        <a
+          href={import.meta.env.WSP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-4 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-3 border border-white/20"
+        >
+          <MessageCircle class="w-6 h-6" />
+          Contactar por WhatsApp
+        </a>
+      </div>
+
+      <!-- Métricas -->
+      <div class="opacity-0 -translate-y-8 grid grid-cols-1 md:grid-cols-3 gap-8 mt-16" data-anim="fade-in-up">
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20">
+          <div class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">+5000</div>
+          <div class="text-white">Trámites Realizados</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20">
+          <div class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">15+</div>
+          <div class="text-white">Años de Experiencia</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center border border-white/20">
+          <div class="text-4xl font-bold text-[hsl(var(--color-light-green))] mb-2">98%</div>
+          <div class="text-white">Clientes Satisfechos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Servicios Section -->
+<section id="servicios" class="py-24 px-4 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div
+      class="text-center mb-16 opacity-0 translate-y-8"
+      data-anim="fade-in-up"
+    >
+      <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+        Nuestros Servicios de Gestoría
+      </h2>
+      <p class="text-lg text-[hsl(var(--color-dark-green))]/70 max-w-3xl mx-auto leading-relaxed">
+        Ofrecemos una amplia gama de servicios profesionales para satisfacer todas tus necesidades de trámites y gestión legal.
+      </p>
+    </div>
+
+    <!-- Grid de Servicios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <div 
+        class="bg-[hsl(var(--color-light-green))]/10 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform border border-[hsl(var(--color-light-green))]/30 opacity-0 translate-y-8"
+        data-anim="fade-in-up"
+      >
+        <div class="bg-[hsl(var(--color-muted-green))] text-white w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+          <Car class="w-8 h-8" />
+        </div>
+        <h3 class="text-2xl font-bold text-[hsl(var(--color-dark-green))] mb-4">Trámites de Autos</h3>
+        <p class="text-[hsl(var(--color-dark-green))]/70 leading-relaxed mb-6">
+          Transferencias, bajas, altas, informes de dominio, cambio de radicación y más servicios vehiculares.
+        </p>
+        <ul class="space-y-2 text-sm text-[hsl(var(--color-dark-green))]/80">
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Transferencias de dominio
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Altas y bajas de vehículos
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Informes de dominio
+          </li>
+        </ul>
+      </div>
+
+      <div 
+        class="bg-[hsl(var(--color-light-green))]/10 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform border border-[hsl(var(--color-light-green))]/30 opacity-0 translate-y-8"
+        data-anim="fade-in-up"
+      >
+        <div class="bg-[hsl(var(--color-muted-green))] text-white w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+          <Building2 class="w-8 h-8" />
+        </div>
+        <h3 class="text-2xl font-bold text-[hsl(var(--color-dark-green))] mb-4">Comercio y Sociedades</h3>
+        <p class="text-[hsl(var(--color-dark-green))]/70 leading-relaxed mb-6">
+          Constitución de sociedades, habilitaciones comerciales, permisos y asesoría empresarial integral.
+        </p>
+        <ul class="space-y-2 text-sm text-[hsl(var(--color-dark-green))]/80">
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Constitución de sociedades
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Habilitaciones comerciales
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Asesoría empresarial
+          </li>
+        </ul>
+      </div>
+
+      <div 
+        class="bg-[hsl(var(--color-light-green))]/10 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform border border-[hsl(var(--color-light-green))]/30 opacity-0 translate-y-8"
+        data-anim="fade-in-up"
+      >
+        <div class="bg-[hsl(var(--color-muted-green))] text-white w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+          <FileText class="w-8 h-8" />
+        </div>
+        <h3 class="text-2xl font-bold text-[hsl(var(--color-dark-green))] mb-4">Documentación Personal</h3>
+        <p class="text-[hsl(var(--color-dark-green))]/70 leading-relaxed mb-6">
+          Partidas de nacimiento, certificados, antecedentes penales y toda la documentación personal que necesites.
+        </p>
+        <ul class="space-y-2 text-sm text-[hsl(var(--color-dark-green))]/80">
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Partidas de nacimiento
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Certificados de antecedentes
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Documentación legal
+          </li>
+        </ul>
+      </div>
+
+      <div 
+        class="bg-[hsl(var(--color-light-green))]/10 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform border border-[hsl(var(--color-light-green))]/30 opacity-0 translate-y-8"
+        data-anim="fade-in-up"
+      >
+        <div class="bg-[hsl(var(--color-muted-green))] text-white w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+          <Scale class="w-8 h-8" />
+        </div>
+        <h3 class="text-2xl font-bold text-[hsl(var(--color-dark-green))] mb-4">Gestión de Multas</h3>
+        <p class="text-[hsl(var(--color-dark-green))]/70 leading-relaxed mb-6">
+          Asesoría y gestión especializada para multas de tránsito y administrativas con resultados garantizados.
+        </p>
+        <ul class="space-y-2 text-sm text-[hsl(var(--color-dark-green))]/80">
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Reducción de multas
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Recursos administrativos
+          </li>
+          <li class="flex items-center gap-2">
+            <CheckCircle class="w-4 h-4 text-[hsl(var(--color-muted-green))]" />
+            Asesoría legal
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Por qué elegirnos -->
+<section class="py-24 px-4 bg-[hsl(var(--color-dark-green))]">
+  <div class="max-w-7xl mx-auto">
+    <div
+      class="text-center mb-16 opacity-0 translate-y-8"
+      data-anim="fade-in-up"
+    >
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        ¿Por qué elegirnos?
+      </h2>
+      <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+        Nuestro compromiso es brindar un servicio profesional, eficiente y transparente en todos nuestros trámites.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div
+        class="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center border border-white/20 opacity-0 translate-y-8"
+        data-anim="fade-in-up"
+      >
+        <div class="bg-[hsl(var(--color-light-green))] text-white w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+          <Clock class="w-8 h-8" />
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Rapidez</h3>
+        <p class="text-white/80">
+          Trámites expeditos con seguimiento personalizado y respuesta inmediata a tus consultas.
+        </p>
+      </div>
+
+      <div
+        class="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center border border-white/20 opacity-0 translate-y-8"
+        data-anim="fade-in-up"
+      >
+        <div class="bg-[hsl(var(--color-light-green))] text-white w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+          <Users class="w-8 h-8" />
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Experiencia</h3>
+        <p class="text-white/80">
+          Más de 15 años de experiencia en gestión de trámites con miles de casos exitosos.
+        </p>
+      </div>
+
+      <div
+        class="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center border border-white/20 opacity-0 translate-y-8"
+        data-anim="fade-in-up"
+      >
+        <div class="bg-[hsl(var(--color-light-green))] text-white w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+          <CheckCircle class="w-8 h-8" />
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Garantía</h3>
+        <p class="text-white/80">
+          Servicio garantizado con transparencia total en costos y resultados esperados.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 px-4 bg-[hsl(var(--color-muted-green))]/10">
+  <div class="max-w-4xl mx-auto text-center">
+    <div
+      class="opacity-0 translate-y-8"
+      data-anim="fade-in-up"
+    >
+      <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+        ¿Necesitás ayuda con tus trámites?
+      </h2>
+      <p class="text-lg text-[hsl(var(--color-dark-green))]/70 mb-10 max-w-3xl mx-auto leading-relaxed">
+        Contanos tu caso y un especialista de nuestro equipo te contactará para asesorarte sin compromiso.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <a 
+          href="#contacto"
+          class="bg-[hsl(var(--color-muted-green))] hover:bg-[hsl(var(--color-dark-green))] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-transform flex items-center gap-3"
+        >
+          <MessageCircle class="w-5 h-5" />
+          Consultar Gratis
+        </a>
+        <a
+          href={import.meta.env.WSP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white hover:bg-gray-100 text-[hsl(var(--color-dark-green))] font-semibold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-transform flex items-center gap-3 border border-[hsl(var(--color-muted-green))]"
+        >
+          <MessageCircle class="w-5 h-5" />
+          WhatsApp Directo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Formulario de Contacto -->
+<section id="contacto">
+  <ContactFormV2 />
+</section>
+
+<FooterV2 />
+
+<WhatsAppButton />
+
+<script>
+  import { initAnimations } from "../scripts/observer.js";
+  document.addEventListener("DOMContentLoaded", () => {
+    initAnimations();
+  });
+</script>
+
+</body>
+</html>

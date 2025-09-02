@@ -1,46 +1,103 @@
-# Astro Starter Kit: Basics
+# 🚗 Gestoría Online - Tu Solución en Trámites
 
-```sh
-npm create astro@latest -- --template basics
+Sitio web moderno para servicios de gestoría y consulta de multas de tránsito, desarrollado con Astro y Tailwind CSS.
+
+## 🚀 Características
+
+- **Diseño Responsivo**: Optimizado para todos los dispositivos
+- **Formulario de Contacto**: Sistema de consultas integrado
+- **Animaciones Suaves**: Efectos visuales modernos
+- **API Backend**: Procesamiento de formularios con Google Apps Script
+- **SEO Optimizado**: Meta tags y estructura semántica
+
+## 🛠️ Tecnologías
+
+- **Astro 5.13.3** - Framework principal
+- **Tailwind CSS 4.1.12** - Estilos y diseño
+- **Node.js** - Servidor backend
+- **TypeScript** - Tipado estático
+- **Lucide Icons** - Iconografía moderna
+
+## 📦 Instalación
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone <tu-repositorio>
+   cd gestoria
+   ```
+
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
+
+3. **Configurar variables de entorno**
+   ```bash
+   # Crear archivo .env en la raíz del proyecto
+   URL_SUBMIT_FORM=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
+   WSP_URL=https://wa.me/5491112345678?text=Hola,%20necesito%20consulta%20sobre%20una%20multa
+   ```
+
+## 🚀 Desarrollo
+
+```bash
+# Servidor de desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+
+# Vista previa de producción
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📁 Estructura del Proyecto
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/          # Componentes reutilizables
+│   ├── ui/             # Componentes de UI base
+│   └── *.astro         # Componentes específicos
+├── layouts/            # Layouts de página
+├── pages/              # Páginas y API routes
+│   └── api/            # Endpoints de API
+├── scripts/            # Scripts del cliente
+└── styles/             # Estilos globales
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🔧 Configuración
 
-## 🧞 Commands
+### Variables de Entorno
 
-All commands are run from the root of the project, from a terminal:
+- `URL_SUBMIT_FORM`: URL del Google Apps Script para procesar formularios
+- `WSP_URL`: URL de WhatsApp para contacto directo
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Google Apps Script
 
-## 👀 Want to learn more?
+Para que el formulario funcione correctamente, necesitas configurar un Google Apps Script que:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Reciba los datos del formulario
+2. Los procese (ej: enviar email, guardar en Google Sheets)
+3. Retorne una respuesta JSON
+
+## 🐛 Errores Corregidos
+
+- ✅ Configuración de variables de entorno en `astro.config.mjs`
+- ✅ Texto inconsistente del botón de envío
+- ✅ Manejo de respuestas JSON en la API
+- ✅ Mejoras en UX del formulario (spinner, mensajes)
+
+## 📝 Uso
+
+1. Los usuarios visitan la página principal
+2. Completan el formulario de contacto con sus datos
+3. El sistema envía la consulta al Google Apps Script
+4. Se procesa la información y se responde al usuario
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
