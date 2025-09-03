@@ -8,6 +8,8 @@ import HeroSection from '../components/HeroSection.astro';
 import HowItWorksSection from '../components/HowItWorksSection.astro';
 import ContactFormV2 from '../components/ContactFormV2.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+const DEFAULT_MULTAS_MSG = 'Hola, me estoy comunicando para reducir una multa';
+const MULTAS_MSG = import.meta.env.WSP_MSG_MULTAS ?? DEFAULT_MULTAS_MSG;
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -42,7 +44,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
   <FooterV2 />
 
-  <WhatsAppButton />
+  <WhatsAppButton message={MULTAS_MSG} />
 
   <script>
     import { initAnimations } from "../scripts/observer.js";

@@ -35,7 +35,10 @@ Sitio web moderno para servicios de gestoría y consulta de multas de tránsito,
    ```bash
    # Crear archivo .env en la raíz del proyecto
    URL_SUBMIT_FORM=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
-   WSP_URL=https://wa.me/5491112345678?text=Hola,%20necesito%20consulta%20sobre%20una%20multa
+   WSP_URL=https://wa.me/5491112345678
+   # Mensajes predefinidos (opcionales; si no se definen se usan fallbacks)
+   WSP_MSG_MULTAS=Hola, me estoy comunicando para reducir una multa
+   WSP_MSG_GESTORIA=Hola, me estoy comunicando por un asunto de gestoría
    ```
 
 ## 🚀 Desarrollo
@@ -70,7 +73,9 @@ src/
 ### Variables de Entorno
 
 - `URL_SUBMIT_FORM`: URL del Google Apps Script para procesar formularios
-- `WSP_URL`: URL de WhatsApp para contacto directo
+- `WSP_URL`: URL base de WhatsApp con tu número en formato internacional, ej: `https://wa.me/5491112345678`
+- `WSP_MSG_MULTAS` (opcional): Mensaje por defecto para la página principal/Multas
+- `WSP_MSG_GESTORIA` (opcional): Mensaje por defecto para la página de Gestoría
 
 ### Google Apps Script
 
