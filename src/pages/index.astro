@@ -1,30 +1,16 @@
 ---
-// Importa cualquier componente o script que necesites aquí.
-import '../styles/global.css'
-import Navbar from '../components/Navbar.astro'
 import AboutSectionV2 from '../components/AboutSectionV2.astro';
-import FooterV2 from '../components/FooterV2.astro';
 import HeroSection from '../components/HeroSection.astro';
 import HowItWorksSection from '../components/HowItWorksSection.astro';
 import ContactFormV2 from '../components/ContactFormV2.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
+import BlogSection from '../components/BlogSection.astro';
+import Layout from '../layouts/Layout.astro';
+
 const DEFAULT_MULTAS_MSG = 'Hola, me estoy comunicando para reducir una multa';
 const MULTAS_MSG = import.meta.env.WSP_MSG_MULTAS ?? DEFAULT_MULTAS_MSG;
 ---
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestoría Online - Tu Solución en Trámites</title>
-  <link rel="stylesheet" href="/style.css">
-  <style>
-    /* Puedes agregar estilos personalizados aquí si es necesario */
-  </style>
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans">
 
-  <Navbar server:defer />
+<Layout title="Inicio" multasMsg={MULTAS_MSG}>
 
   <section id="HeroSection">
     <HeroSection />
@@ -42,16 +28,8 @@ const MULTAS_MSG = import.meta.env.WSP_MSG_MULTAS ?? DEFAULT_MULTAS_MSG;
     <ContactFormV2 />
   </section>
 
-  <FooterV2 />
+  <section id="BlogSection">
+    <BlogSection />
+  </section>
 
-  <WhatsAppButton message={MULTAS_MSG} />
-
-  <script>
-    import { initAnimations } from "../scripts/observer.js";
-    document.addEventListener("DOMContentLoaded", () => {
-      initAnimations();
-    });
-  </script>
-
-</body>
-</html>
+</Layout>

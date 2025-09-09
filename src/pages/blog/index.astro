@@ -1,27 +1,142 @@
 ---
 import { getCollection } from "astro:content";
+import Layout from '../../layouts/Layout.astro';
+import BlogArticle from "../../components/ui/BlogArticle.astro";
 
-const posts = await getCollection("blog");
-const sortedPosts = posts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-console.log("🚀 ~ sortedPosts:", sortedPosts)
+// Pagination settings
+const POSTS_PER_PAGE = 9;
+
+// Get all blog posts and sort them by publication date
+const allPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Get current page from URL, default to 1
+const currentPage = Number(Astro.url.searchParams.get('page') || 1);
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+// Get posts for current page
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+const endIndex = startIndex + POSTS_PER_PAGE;
+const posts = allPosts.slice(startIndex, endIndex);
+
+// Generate pagination links
+const getPaginationLinks = (current: number, total: number) => {
+  const links = [];
+  const maxVisiblePages = 5;
+  let startPage = Math.max(1, current - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(total, startPage + maxVisiblePages - 1);
+  
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+
+  // Previous page link
+  if (current > 1) {
+    links.push({ number: '«', page: current - 1, isActive: false, isDisabled: false });
+  }
+
+  // First page
+  if (startPage > 1) {
+    links.push({ number: '1', page: 1, isActive: false, isDisabled: false });
+    if (startPage > 2) {
+      links.push({ number: '...', page: 0, isActive: false, isDisabled: true });
+    }
+  }
+
+  // Page numbers
+  for (let i = startPage; i <= endPage; i++) {
+    links.push({
+      number: i.toString(),
+      page: i,
+      isActive: i === current,
+      isDisabled: false
+    });
+  }
+
+  // Last page
+  if (endPage < total) {
+    if (endPage < total - 1) {
+      links.push({ number: '...', page: 0, isActive: false, isDisabled: true });
+    }
+    links.push({ 
+      number: total.toString(), 
+      page: total, 
+      isActive: false, 
+      isDisabled: false 
+    });
+  }
+
+  // Next page link
+  if (current < total) {
+    links.push({ number: '»', page: current + 1, isActive: false, isDisabled: false });
+  }
+
+  return links;
+};
+
+const paginationLinks = getPaginationLinks(currentPage, totalPages);
 ---
 
-<html lang="es">
-  <head>
-    <title>Blog</title>
-  </head>
-  <body>
-    <h1>Blog</h1>
-    <ul>
-      {sortedPosts.map((post) => (
-        <li>
-          <a href={`/blog/${post.data.slug}/`}>{post.data.title}</a>
-          <p>{post.data.description}</p>
-          <small>{post.data.pubDate.toDateString()}</small>
-        </li>
-      ))}
-    </ul>
-  </body>
-</html>
+<Layout title="Blog" description="Mantente actualizado con las últimas noticias y artículos sobre legislación de tránsito y consejos legales.">
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-6">
+          Nuestro Blog
+        </h1>
+        <p class="text-lg text-[hsl(var(--color-dark-green))]/70 max-w-3xl mx-auto leading-relaxed">
+          Mantente actualizado con las últimas noticias y artículos sobre legislación de tránsito y consejos legales.
+        </p>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {posts.map((post, index) => (
+          <BlogArticle post={post} index={index} />
+        ))}
+      </div>
+
+      <!-- Pagination -->
+      {totalPages > 1 && (
+        <nav class="flex justify-center mt-12" aria-label="Paginación">
+          <ul class="inline-flex items-center -space-x-px">
+            {paginationLinks.map((link, index) => (
+              <li>
+                <a
+                  href={link.isDisabled ? '#' : `?page=${link.page}`}
+                  class={`px-3 py-2 mx-1 rounded-lg ${
+                    link.isActive
+                      ? 'bg-[hsl(var(--color-muted-green))] text-white'
+                      : link.isDisabled
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-[hsl(var(--color-dark-green))] hover:bg-[hsl(var(--color-light-green))]/10'
+                  }`}
+                  aria-current={link.isActive ? 'page' : undefined}
+                  aria-disabled={link.isDisabled}
+                >
+                  {link.number}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .gradient-text {
+    background: linear-gradient(90deg, #1a5f4a 0%, #2d8b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

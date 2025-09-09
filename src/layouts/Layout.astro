@@ -1,14 +1,44 @@
-<!doctype html>
-<html lang="en">
+---
+import '../styles/global.css'
+import FooterV2 from "../components/FooterV2.astro";
+import Navbar from "../components/Navbar.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+
+const { title, multasMsg, description, showAllTitle = true } = Astro.props as { title?: string, multasMsg: string, description?: string, showAllTitle?: boolean };
+
+const DEFAULT_DESCRIPTION = 'Gestoría Online - Tu Solución en Trámites';
+const DEFAULT_MULTAS_MSG = 'Hola, me estoy comunicando para reducir una multa';
+const MULTAS_MSG = (multasMsg || import.meta.env.WSP_MSG_MULTAS) || DEFAULT_MULTAS_MSG;
+---
+<!DOCTYPE html>
+<html lang="es">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+    <meta name="description" content={description || DEFAULT_DESCRIPTION} />
+		<title>{title}{showAllTitle ? ' | Gestoría Online - Tu Solución en Trámites' : ''}</title>
+		<link rel="stylesheet" href="/style.css">
+		<style>
+			/* Puedes agregar estilos personalizados aquí si es necesario */
+		</style>
 	</head>
-	<body>
+	<body class="bg-gray-100 text-gray-800 font-sans">
+	
+		<Navbar server:defer />
 		<slot />
+
+		<FooterV2 />
+	
+		<WhatsAppButton message={MULTAS_MSG} />
+	
+		<script>
+			import { initAnimations } from "../scripts/observer.js";
+			document.addEventListener("DOMContentLoaded", () => {
+				initAnimations();
+			});
+		</script>
 	</body>
 </html>
 

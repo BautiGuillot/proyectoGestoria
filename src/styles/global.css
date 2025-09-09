@@ -40,3 +40,52 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Prose styling for markdown content */
+.prose {
+  line-height: 1.75;
+}
+.prose h2 {
+  color: hsl(var(--color-dark-green));
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.875rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+.prose h3 {
+  color: hsl(var(--color-dark-green));
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.prose p {
+  margin-bottom: 1.25rem;
+}
+.prose a {
+  color: hsl(var(--color-muted-green));
+  text-decoration: none;
+  font-weight: 500;
+}
+.prose a:hover {
+  text-decoration: underline;
+}
+.prose ul, .prose ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.prose li {
+  margin-bottom: 0.5rem;
+}
+.prose img {
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+.prose blockquote {
+  border-left: 4px solid hsl(var(--color-muted-green));
+  padding-left: 1rem;
+  font-style: italic;
+  color: #4b5563;
+  margin: 1.5rem 0;
+}

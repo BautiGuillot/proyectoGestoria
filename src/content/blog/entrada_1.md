@@ -5,6 +5,8 @@ pubDate: 2025-09-06
 author: "Mateo"
 slug: "entrada-1"
 tags: ["astro", "blog"]
+image: "/alber.jpg"
+caption: "Mi primer post en Astro"
 ---
 
 ¡Hola! Este es mi primer post.  

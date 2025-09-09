@@ -1,5 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Calendar, Clock, ArrowLeft } from '@lucide/astro';
+import { formatDate, getReadingTime } from '../../utils/format';
+import BlogArticle from "../../components/ui/BlogArticle.astro";
 
 export const prerender = true;
 
@@ -12,19 +16,114 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const { Content } = await render(post);
+
+let relatedPosts = await getCollection("blog", ({data}) => {
+  return data.tags.some(tag => post.data.tags.includes(tag));
+});
+
+relatedPosts = relatedPosts.filter((post) => post.data.slug !== Astro.props.post.data.slug).slice(0, 3);
 ---
 
-<html lang="es">
-  <head>
-    <title>{post.data.title}</title>
-    <meta name="description" content={post.data.description} />
-  </head>
-  <body>
-    <article>
-      <h1>{post.data.title}</h1>
-      <p><i>Por {post.data.author} – {post.data.pubDate.toDateString()}</i></p>
-      <div innerHTML={post.body} />
-    </article>
-    <a href="/blog">⬅ Volver al blog</a>
-  </body>
-</html>
+<Layout 
+  title={post.data.title} 
+  description={post.data.description}
+  multasMsg=""
+>
+  <article class="max-w-4xl mx-auto py-16 px-4">
+    <!-- Back Button -->
+    <a 
+      href="/blog" 
+      class="inline-flex items-center text-[hsl(var(--color-muted-green))] hover:text-[hsl(var(--color-dark-green))] mb-8 transition-colors"
+    >
+      <ArrowLeft class="w-5 h-5 mr-2" />
+      Volver al blog
+    </a>
+
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-center text-sm text-gray-500 mb-4">
+        <span class="flex items-center mr-6">
+          <Calendar class="w-4 h-4 mr-1" />
+          {formatDate(post.data.pubDate)}
+        </span>
+        <span class="flex items-center">
+          <Clock class="w-4 h-4 mr-1" />
+          {getReadingTime(post.body)} min de lectura
+        </span>
+        {post.data.tags && post.data.tags.length > 0 && (
+          <div class="ml-6">
+            {post.data.tags.map(tag => (
+              <span class="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-md mr-2">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl font-bold text-[hsl(var(--color-dark-green))] mb-6">
+        {post.data.title}
+      </h1>
+      
+      {post.data.author && (
+        <div class="flex items-center">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-bold mr-3">
+            {post.data.author.charAt(0).toUpperCase()}
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-900">{post.data.author}</p>
+          </div>
+        </div>
+      )}
+    </header>
+
+    <!-- Featured Image -->
+    {post.data.image && (
+      <div class="mb-12 rounded-xl overflow-hidden">
+        <img 
+          src={post.data.image} 
+          alt={post.data.title}
+          class="w-full h-auto max-h-[500px] object-cover"
+          loading="eager"
+        />
+        {post.data.caption && (
+          <p class="text-sm text-gray-500 mt-2">{post.data.caption}</p>
+        )}
+      </div>
+    )}
+
+    <!-- Content -->
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+
+    <!-- Author Bio -->
+    {post.data.author && (
+      <div class="mt-16 pt-8 border-t border-gray-200">
+        <div class="flex items-start">
+          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-2xl text-gray-600 font-bold mr-6 flex-shrink-0">
+            {post.data.author.charAt(0).toUpperCase()}
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900">Escrito por {post.data.author}</h3>
+            <p class="mt-2 text-gray-600">
+              {post.data.author} es un experto en legislación de tránsito con amplia experiencia en la gestión de multas y asesoramiento legal.
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Related Posts -->
+    <div class="mt-20">
+      <h2 class="text-2xl font-bold text-[hsl(var(--color-dark-green))] mb-8">Artículos relacionados</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {relatedPosts.map((post, index) => (
+          <BlogArticle post={post} index={index} />
+        ))}
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>
