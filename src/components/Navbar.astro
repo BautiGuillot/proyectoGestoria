@@ -2,11 +2,25 @@
 const navLinks = [
   { name: 'Inicio', href: '/' },
   { name: 'Quiénes Somos', href: '/#AboutSectionV2' },
-  { name: 'Servicios', href: '/#HowItWorksSection' },
+  { 
+    name: 'Servicios', 
+    href: '#', 
+    select: true,
+    submenu: [
+      { name: 'Gestoría', href: '/gestoria' },
+      { name: 'Multas', href: '/#HowItWorksSection' }
+    ]
+  },
   { name: 'Contacto', href: '/#ContactFormV2' },
   { name: 'Gestoría', href: '/gestoria' }, 
 ];
 const WSP_URL = import.meta.env.WSP_URL;
+
+// Estado para controlar el menú desplegable
+let isDropdownOpen = false;
+const toggleDropdown = () => {
+  isDropdownOpen = !isDropdownOpen;
+};
 ---
 
 <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
@@ -19,15 +33,48 @@ const WSP_URL = import.meta.env.WSP_URL;
     </div>
 
     <!-- Desktop Navigation -->
-    <div class="hidden md:flex space-x-8">
+    <div class="hidden md:flex space-x-8 items-center">
       {
         navLinks.map((link) => (
-          <a 
-            href={link.href} 
-            class="text-gray-700 hover:text-[hsl(var(--color-dark-green))] transition-colors duration-300"
-          >
-            {link.name}
-          </a>
+          <div class="relative group">
+            {
+              link.select ? (
+                <div>
+                  <button 
+                    id="dropdown-button"
+                    class="flex items-center text-gray-700 hover:text-[hsl(var(--color-dark-green))] transition-colors duration-300 focus:outline-none cursor-pointer"
+                    onclick="document.getElementById('dropdown').classList.toggle('hidden')"
+                  >
+                    {link.name}
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                  <!-- Dropdown Menu -->
+                  <div id="dropdown" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+                    <div class="py-1">
+                      {link.submenu.map((subItem) => (
+                        <a 
+                          href={subItem.href}
+                          class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-[hsl(var(--color-dark-green))] transition-colors duration-200"
+                          onclick="document.getElementById('dropdown').classList.add('hidden')"
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a 
+                  href={link.href} 
+                  class="text-gray-700 hover:text-[hsl(var(--color-dark-green))] transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              )
+            }
+          </div>
         ))
       }
     </div>
@@ -56,12 +103,41 @@ const WSP_URL = import.meta.env.WSP_URL;
     <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
       {
         navLinks.map((link) => (
-          <a 
-            href={link.href} 
-            class="text-gray-700 hover:text-[hsl(var(--color-dark-green))] py-2 transition-colors duration-300"
-          >
-            {link.name}
-          </a>
+          <div>
+            {
+              link.select ? (
+                <div>
+                  <button 
+                    class="flex items-center text-gray-700 hover:text-[hsl(var(--color-dark-green))] py-2 transition-colors duration-300 focus:outline-none w-full text-left"
+                    onclick="this.nextElementSibling.classList.toggle('hidden')"
+                  >
+                    {link.name}
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                  <div class="ml-4 mt-2 hidden">
+                    {link.submenu.map((subItem) => (
+                      <a 
+                        href={subItem.href}
+                        class="block py-2 text-gray-700 hover:text-[hsl(var(--color-dark-green))] transition-colors duration-200"
+                        onclick="this.closest('.hidden').classList.add('hidden')"
+                      >
+                        {subItem.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a 
+                  href={link.href} 
+                  class="text-gray-700 hover:text-[hsl(var(--color-dark-green))] py-2 transition-colors duration-300 block"
+                >
+                  {link.name}
+                </a>
+              )
+            }
+          </div>
         ))
       }
       <a 
@@ -79,6 +155,7 @@ const WSP_URL = import.meta.env.WSP_URL;
 <div class="pt-20"></div>
 
 <script>
+  // Toggle mobile menu
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   
@@ -87,4 +164,17 @@ const WSP_URL = import.meta.env.WSP_URL;
       mobileMenu.classList.toggle('hidden');
     });
   }
+
+  // Cerrar el menú desplegable al hacer clic fuera de él
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdown');
+    const dropdownButton = document.getElementById('dropdown-button');
+    // @ts-expect-error
+    const isClickInside = event.target === dropdownButton || dropdownButton.contains(event.target);
+    
+    // @ts-expect-error
+    if (dropdown && !isClickInside && !event.target.closest('#dropdown')) {
+      dropdown.classList.add('hidden');
+    }
+  });
 </script>
