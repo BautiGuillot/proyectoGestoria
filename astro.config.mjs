@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   adapter: node({ mode: 'standalone' }),
   vite: {
     plugins: [tailwindcss()]
@@ -16,5 +16,5 @@ export default defineConfig({
     mdx(),
     sitemap(),
   ],
-  site: "http://ec2-54-233-52-167.sa-east-1.compute.amazonaws.com/",
+  site: "https://gestionymultas.com/",
 });
