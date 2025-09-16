@@ -29,6 +29,7 @@ relatedPosts = relatedPosts.filter((post) => post.data.slug !== Astro.props.post
   title={post.data.title} 
   description={post.data.description}
   multasMsg=""
+  path={`blog/${post.data.slug}`}
 >
   <article class="max-w-4xl mx-auto py-16 px-4">
     <!-- Back Button -->

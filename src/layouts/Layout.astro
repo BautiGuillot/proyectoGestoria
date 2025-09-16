@@ -4,7 +4,7 @@ import FooterV2 from "../components/FooterV2.astro";
 import Navbar from "../components/Navbar.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 
-const { title, multasMsg, description, showAllTitle = true } = Astro.props as { title?: string, multasMsg: string, description?: string, showAllTitle?: boolean };
+const { title, multasMsg, description, showAllTitle = true, path = "" } = Astro.props as { title?: string, multasMsg: string, description?: string, showAllTitle?: boolean, path?: string };
 
 const DEFAULT_DESCRIPTION = 'Gestoría Online - Tu Solución en Trámites';
 const DEFAULT_MULTAS_MSG = 'Hola, me estoy comunicando para reducir una multa';
@@ -15,14 +15,38 @@ const MULTAS_MSG = (multasMsg || import.meta.env.WSP_MSG_MULTAS) || DEFAULT_MULT
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" sizes="any">
 		<meta name="generator" content={Astro.generator} />
     <meta name="description" content={description || DEFAULT_DESCRIPTION} />
 		<title>{title}{showAllTitle ? ' | Gestoría Online - Tu Solución en Trámites' : ''}</title>
 		<link rel="stylesheet" href="/style.css">
-		<style>
-			/* Puedes agregar estilos personalizados aquí si es necesario */
-		</style>
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description || DEFAULT_DESCRIPTION} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://gestionymultas.com/" />
+		<meta property="og:image" content="https://gestionymultas.com/radar.webp" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description || DEFAULT_DESCRIPTION} />
+		<meta name="twitter:image" content="https://gestionymultas.com/radar.webp" />
+		<meta name="keywords" content="multas, gestión online, infracciones, pagar multas, Argentina, trámites online" />
+		<link rel="canonical" href={`https://gestionymultas.com/${path}`} />
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Gestión y Multas",
+				"url": "https://gestionymultas.com/",
+				"logo": "https://gestionymultas.com/logo.png",
+				"contactPoint": {
+					"@type": "ContactPoint",
+					"telephone": "+54-2364-459300",
+					"contactType": "customer service",
+					"areaServed": "AR",
+					"availableLanguage": "es"
+				}
+			}
+		</script>
 	</head>
 	<body class="bg-gray-100 text-gray-800 font-sans">
 	

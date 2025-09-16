@@ -1,7 +1,7 @@
 ---
 import ContactFormV2 from '../components/ContactFormV2.astro';
 import '../styles/global.css'
-import { Car, Building2, FileText, Scale, MessageCircle, CheckCircle, Clock, Users } from "@lucide/astro";
+import { Car, FileText, Scale, MessageCircle, CheckCircle, Clock, Users } from "@lucide/astro";
 import Layout from '../layouts/Layout.astro';
 const DEFAULT_GESTORIA_MSG = 'Hola, me estoy comunicando por un asunto de gestoría';
 const GESTORIA_MSG = import.meta.env.WSP_MSG_GESTORIA ?? DEFAULT_GESTORIA_MSG;
@@ -9,7 +9,7 @@ const PUBLIC_WSP_URL = import.meta.env.PUBLIC_WSP_URL;
 const GESTORIA_WSP_HREF = `${PUBLIC_WSP_URL}${PUBLIC_WSP_URL.includes('?') ? '&' : '?'}text=${encodeURIComponent(GESTORIA_MSG)}`;
 ---
 
-<Layout title="Gestoría Integral - Servicios Profesionales de Trámites" multasMsg={GESTORIA_MSG} showAllTitle={false}>
+<Layout title="Gestoría Integral - Servicios Profesionales de Trámites" multasMsg={GESTORIA_MSG} showAllTitle={false} path="gestoria">
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0">
