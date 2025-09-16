@@ -9,6 +9,7 @@ import CardHeader from './ui/CardHeader.astro';
 import CardTitle from './ui/CardTitle.astro';
 import CardDescription from './ui/CardDescription.astro';
 import CardContent from './ui/CardContent.astro';
+const scriptUrl = import.meta.env.URL_SUBMIT_FORM;
 ---
 
 <section class="py-16 px-4 bg-[hsl(var(--color-muted-green))]/10">
@@ -42,7 +43,7 @@ import CardContent from './ui/CardContent.astro';
         </CardHeader>
         
         <CardContent>
-          <form id="contactFormV2" class="space-y-6">
+          <form id="contactFormV2" data-script-url={scriptUrl} class="space-y-6">
             <!-- Nombre y patente -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
@@ -151,5 +152,7 @@ import CardContent from './ui/CardContent.astro';
 
 <script>
   import { handleSubmitForm } from "../scripts/contactFormSubmit";
-  handleSubmitForm();
+  const container = document.getElementById('contactFormV2');
+  const scriptUrl = container?.dataset.scriptUrl;
+  handleSubmitForm(scriptUrl);
 </script>

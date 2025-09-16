@@ -1,7 +1,12 @@
-export function handleSubmitForm() {
+export function handleSubmitForm(url) {
   document.getElementById('contactFormV2')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!e.target) return;
+
+    if (!url) {
+      alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde. 0001');
+      return;
+    }
     
     // @ts-expect-error
     const formData = new FormData(e.target);
@@ -12,9 +17,8 @@ export function handleSubmitForm() {
     try {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Enviando...';
-      
-      const endpoint = import.meta.env.PUBLIC_URL_SUBMIT_FORM || 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-      const response = await fetch(endpoint, {
+
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,14 +26,16 @@ export function handleSubmitForm() {
         body: JSON.stringify(data)
       });
 
-      if (response.status === 200) {
-        alert('¡Consulta enviada con éxito! Nos pondremos en contacto contigo pronto.');
-        // @ts-expect-error
-        e.target.reset();
-      } else {
-        alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.');
+      if (response.ok) {
+        const result = await response.json();
+        if (!result.error) {
+          alert('¡Consulta enviada con éxito! Nos pondremos en contacto contigo pronto.');
+          // @ts-expect-error
+          e.target.reset();
+          return;
+        }
       }
-      
+      alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.');
     } catch (error) {
       console.log('Error:', error);
       alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.');
