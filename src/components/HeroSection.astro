@@ -1,9 +1,9 @@
 ---
 import { MessageCircle } from '@lucide/astro';
-const WSP_URL = import.meta.env.WSP_URL;
+const PUBLIC_WSP_URL = import.meta.env.PUBLIC_WSP_URL;
 const DEFAULT_MULTAS_MSG = 'Hola, me estoy comunicando para reducir una multa';
 const MULTAS_MSG = import.meta.env.WSP_MSG_MULTAS ?? DEFAULT_MULTAS_MSG;
-const HERO_WSP_HREF = `${WSP_URL}${WSP_URL.includes('?') ? '&' : '?'}text=${encodeURIComponent(MULTAS_MSG)}`;
+const HERO_WSP_HREF = `${PUBLIC_WSP_URL}${PUBLIC_WSP_URL.includes('?') ? '&' : '?'}text=${encodeURIComponent(MULTAS_MSG)}`;
 ---
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden">

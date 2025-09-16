@@ -14,7 +14,7 @@ const navLinks = [
   { name: 'Contacto', href: '/#ContactFormV2' },
   { name: 'Gestoría', href: '/gestoria' }, 
 ];
-const WSP_URL = import.meta.env.WSP_URL;
+const PUBLIC_WSP_URL = import.meta.env.PUBLIC_WSP_URL;
 
 // Estado para controlar el menú desplegable
 let isDropdownOpen = false;
@@ -81,7 +81,7 @@ const toggleDropdown = () => {
 
     <!-- WhatsApp Button -->
     <a 
-      href={WSP_URL}
+      href={PUBLIC_WSP_URL}
       target="_blank"
       class="hidden md:block bg-[hsl(var(--color-dark-green))] hover:bg-[hsl(var(--color-muted-green))] text-white font-medium py-2 px-5 rounded-full transition-colors duration-300 shadow-md"
     >
@@ -141,7 +141,7 @@ const toggleDropdown = () => {
         ))
       }
       <a 
-        href={WSP_URL} 
+        href={PUBLIC_WSP_URL} 
         target="_blank"
         class="bg-[hsl(var(--color-dark-green))] hover:bg-[hsl(var(--color-muted-green))] text-white font-medium py-2 px-4 rounded-full text-center transition-colors duration-300 shadow-md"
       >
