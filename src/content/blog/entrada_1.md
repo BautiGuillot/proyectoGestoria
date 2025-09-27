@@ -5,7 +5,7 @@ pubDate: 2025-09-27
 author: "Camila Vitale"
 slug: "gestora-en-junin-tramites-de-auto-moto-transferencias-e-inscripcion-0-km"
 tags: ["blog", "tramites", "autos", "motos", "transferencias", "inscripcion 0km"]
-image: "/control.webp"
+image: "/tramite.png"
 caption: "Gestora en Junín: trámites de auto, moto, transferencias e inscripción 0 km"
 ---
 
