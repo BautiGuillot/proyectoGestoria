@@ -4,7 +4,7 @@ import FooterV2 from "../components/FooterV2.astro";
 import Navbar from "../components/Navbar.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 
-const { title, multasMsg, description, showAllTitle = true, path = "" } = Astro.props as { title?: string, multasMsg: string, description?: string, showAllTitle?: boolean, path?: string };
+const { title, multasMsg, description, showAllTitle = true, path = "", wspUrl } = Astro.props as { title?: string, multasMsg: string, description?: string, showAllTitle?: boolean, path?: string, wspUrl?: string };
 
 const DEFAULT_DESCRIPTION = 'Gestoría Online - Tu Solución en Trámites';
 const DEFAULT_MULTAS_MSG = 'Hola, me estoy comunicando para reducir una multa';
@@ -48,7 +48,7 @@ const MULTAS_MSG = (multasMsg || import.meta.env.WSP_MSG_MULTAS) || DEFAULT_MULT
 			}
 		</script>
 		<!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -57,12 +57,12 @@ const MULTAS_MSG = (multasMsg || import.meta.env.WSP_MSG_MULTAS) || DEFAULT_MULT
 	</head>
 	<body class="bg-gray-100 text-gray-800 font-sans">
 	
-		<Navbar />
+		<Navbar wspUrl={wspUrl} />
 		<slot />
 
 		<FooterV2 />
 	
-		<WhatsAppButton message={MULTAS_MSG} />
+		<WhatsAppButton message={MULTAS_MSG} wspUrl={wspUrl} />
 	
 		<script>
 			import { initAnimations } from "../scripts/observer.js";

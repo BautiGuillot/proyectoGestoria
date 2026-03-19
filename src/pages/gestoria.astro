@@ -5,11 +5,11 @@ import { Car, FileText, Scale, MessageCircle, CheckCircle, Clock, Users } from "
 import Layout from '../layouts/Layout.astro';
 const DEFAULT_GESTORIA_MSG = 'Hola, me estoy comunicando por un asunto de gestoría';
 const GESTORIA_MSG = import.meta.env.WSP_MSG_GESTORIA ?? DEFAULT_GESTORIA_MSG;
-const PUBLIC_WSP_URL = import.meta.env.PUBLIC_WSP_URL;
-const GESTORIA_WSP_HREF = `${PUBLIC_WSP_URL}${PUBLIC_WSP_URL.includes('?') ? '&' : '?'}text=${encodeURIComponent(GESTORIA_MSG)}`;
+const GESTORIA_WSP_BASE = "https://wa.me/5492364310487";
+const GESTORIA_WSP_HREF = `${GESTORIA_WSP_BASE}?text=${encodeURIComponent(GESTORIA_MSG)}`;
 ---
 
-<Layout title="Gestoría Integral - Servicios Profesionales de Trámites" multasMsg={GESTORIA_MSG} showAllTitle={false} path="gestoria">
+<Layout title="Gestoría Integral - Servicios Profesionales de Trámites" multasMsg={GESTORIA_MSG} showAllTitle={false} path="gestoria" wspUrl={GESTORIA_WSP_BASE}>
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0">

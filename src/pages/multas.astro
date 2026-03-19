@@ -1,0 +1,235 @@
+---
+import HowItWorksSection from "../components/HowItWorksSection.astro";
+import ContactFormV2 from "../components/ContactFormV2.astro";
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import {
+  CheckCircle,
+  AlertTriangle,
+  Shield,
+  Clock,
+  Users,
+  Star,
+} from "@lucide/astro";
+
+const DEFAULT_MULTAS_MSG = "Hola, me estoy comunicando para reducir una multa";
+const MULTAS_MSG = import.meta.env.WSP_MSG_MULTAS ?? DEFAULT_MULTAS_MSG;
+const PUBLIC_WSP_URL = import.meta.env.PUBLIC_WSP_URL;
+
+const WSP_BASE = "https://wa.me/542364459300";
+const HERO_MSG = encodeURIComponent("Hola, quisiera evaluar mi multa");
+const CTA_MSG = encodeURIComponent(
+  "Hola quiero consultar si mi multa puede reducirse, la patente del vehiculo es ",
+);
+const HERO_WSP = `${WSP_BASE}?text=${HERO_MSG}`;
+const CTA_WSP = `${WSP_BASE}?text=${CTA_MSG}`;
+
+const tiposMultas = [
+  "Fotomultas",
+  "Exceso de velocidad",
+  "Multas en CABA",
+  "Infracciones en provincia de Buenos Aires",
+  "Otras jurisdicciones (consultar)",
+];
+
+const razones = [
+  "Experiencia en gestión de multas de tránsito",
+  "Atención personalizada en cada caso",
+  "Proceso claro y seguimiento constante",
+  "Gestión profesional y transparente",
+];
+---
+
+<Layout
+  title="Reduccion de Multas en Provincia de Buenos Aires y CABA | Gestión Profesional Online"
+  description="Reducimos multas de tránsito en provincia de Buenos Aires y CABA. Evaluación personalizada, gestión legal, profesional y respuesta rápida. Consultá por WhatsApp."
+  showAllTitle={false}
+  path="multas"
+  multasMsg={MULTAS_MSG}
+  wspUrl={WSP_BASE}
+>
+  <!-- BLOQUE 1: Hero -->
+  <section
+    class="py-20 px-4 bg-[hsl(var(--color-dark-green))] text-white text-center"
+  >
+    <div class="max-w-3xl mx-auto">
+      <div class="opacity-0 translate-y-8" data-anim="fade-in-up">
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+          Reducción de multas en provincia de Buenos Aires y CABA
+        </h1>
+        <p class="text-xl text-white/80 mb-4">
+          ¿Tenés multas de tránsito y querés pagar menos?
+        </p>
+        <p class="text-lg text-white/70 leading-relaxed mb-4">
+          Analizamos infracciones y gestionamos la reducción de forma
+          profesional, rápida y 100% online.
+        </p>
+        <p class="text-lg text-white/70 mb-10">
+          Trabajamos principalmente en Provincia de Buenos Aires y CABA.
+        </p>
+        <a
+          href={HERO_WSP}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-[hsl(var(--color-muted-green))] hover:bg-[hsl(var(--color-light-green))] text-white font-bold px-10 py-5 rounded-xl text-lg shadow-xl hover:scale-105 transition-all duration-300"
+        >
+          <!-- WhatsApp icon -->
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+            ></path>
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.833L.057 23.143a.75.75 0 0 0 .917.917l5.31-1.453A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.869 0-3.623-.484-5.145-1.334l-.369-.214-3.832 1.048 1.048-3.832-.214-.369A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+            ></path>
+          </svg>
+          Evaluar mi multa
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 2: El problema -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div
+        class="opacity-0 translate-y-8 grid md:grid-cols-2 gap-12 items-center"
+        data-anim="fade-in-up"
+      >
+        <!-- Problema -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="bg-amber-100 p-3 rounded-xl">
+              <AlertTriangle class="w-7 h-7 text-amber-600" />
+            </div>
+            <h2 class="text-2xl font-bold text-[hsl(var(--color-dark-green))]">
+              Las multas pueden traer problemas
+            </h2>
+          </div>
+          <ul class="space-y-4">
+            {
+              [
+                "Impedir la transferencia de un vehículo",
+                "Aumentar con el tiempo por intereses",
+                "Complicar trámites del automotor",
+              ].map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-1 w-2 h-2 rounded-full bg-amber-500 flex-shrink-0" />
+                  <span class="text-gray-700 text-lg">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Solución -->
+        <div
+          class="bg-[hsl(var(--color-dark-green))]/5 rounded-2xl p-8 border border-[hsl(var(--color-muted-green))]/30"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <div class="bg-[hsl(var(--color-muted-green))]/20 p-3 rounded-xl">
+              <Shield class="w-7 h-7 text-[hsl(var(--color-muted-green))]" />
+            </div>
+            <h3 class="text-xl font-bold text-[hsl(var(--color-dark-green))]">
+              Nuestra solución
+            </h3>
+          </div>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            No todas las multas deben pagarse al 100%. Muchas pueden reducirse
+            si se gestionan correctamente.
+            <strong class="text-[hsl(var(--color-dark-green))]">
+              Nos encargamos del proceso por vos.</strong
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 3: Cómo funciona (componente existente) -->
+  <HowItWorksSection />
+
+  <!-- BLOQUE 4: Qué multas gestionamos -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="opacity-0 translate-y-8" data-anim="fade-in-up">
+        <h2 class="text-4xl font-bold gradient-text mb-4">
+          ¿Qué multas gestionamos?
+        </h2>
+        <p class="text-lg text-gray-600 mb-12">
+          Trabajamos con una amplia variedad de infracciones de tránsito.
+        </p>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto"
+        >
+          {
+            tiposMultas.map((tipo) => (
+              <div class="flex items-center gap-3 bg-[hsl(var(--color-light-green))]/10 border border-[hsl(var(--color-light-green))]/30 rounded-xl px-5 py-4 hover:scale-[1.02] transition-transform">
+                <CheckCircle class="w-5 h-5 text-[hsl(var(--color-muted-green))] flex-shrink-0" />
+                <span class="text-[hsl(var(--color-dark-green))] font-medium">
+                  {tipo}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 5: Por qué elegirnos -->
+  <section class="py-20 px-4 bg-[hsl(var(--color-dark-green))]">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="opacity-0 translate-y-8" data-anim="fade-in-up">
+        <h2 class="text-4xl font-bold text-white mb-4">¿Por qué elegirnos?</h2>
+        <p class="text-lg text-white/70 mb-12">
+          Un equipo comprometido con tu caso de principio a fin.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {
+            razones.map((razon, i) => (
+              <div class="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-left hover:bg-white/15 transition-colors">
+                <div class="bg-[hsl(var(--color-muted-green))] text-white w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
+                  {i + 1}
+                </div>
+                <p class="text-white text-lg leading-snug">{razon}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE 6: CTA Final -->
+  <section class="py-20 px-4 bg-[hsl(var(--color-muted-green))]/10">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="opacity-0 translate-y-8" data-anim="fade-in-up">
+        <h2 class="text-4xl font-bold gradient-text mb-4">
+          ¿Querés saber si tu multa puede reducirse?
+        </h2>
+        <p class="text-xl text-gray-600 mb-10">
+          Enviánosla ahora y analizamos tu caso sin compromiso.
+        </p>
+        <a
+          href={CTA_WSP}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-[hsl(var(--color-dark-green))] hover:bg-[hsl(var(--color-muted-green))] text-white font-bold px-10 py-5 rounded-xl text-lg shadow-xl hover:scale-105 transition-all duration-300"
+        >
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+            ></path>
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.833L.057 23.143a.75.75 0 0 0 .917.917l5.31-1.453A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.869 0-3.623-.484-5.145-1.334l-.369-.214-3.832 1.048 1.048-3.832-.214-.369A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+            ></path>
+          </svg>
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de consulta (opcional, para quienes prefieran el form) -->
+  <ContactFormV2 />
+</Layout>

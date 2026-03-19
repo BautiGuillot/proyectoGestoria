@@ -8,13 +8,15 @@ const navLinks = [
     select: true,
     submenu: [
       { name: 'Gestoría', href: '/gestoria' },
-      { name: 'Multas', href: '/#HowItWorksSection' }
+      { name: 'Multas', href: '/multas' }
     ]
   },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contacto', href: '/#ContactFormV2' },
   { name: 'Gestoría', href: '/gestoria' }, 
 ];
-const PUBLIC_WSP_URL = import.meta.env.PUBLIC_WSP_URL;
+const { wspUrl } = Astro.props as { wspUrl?: string };
+const PUBLIC_WSP_URL = wspUrl || import.meta.env.PUBLIC_WSP_URL;
 
 // Estado para controlar el menú desplegable
 let isDropdownOpen = false;

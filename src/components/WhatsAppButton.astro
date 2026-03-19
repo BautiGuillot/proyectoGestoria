@@ -1,10 +1,10 @@
 ---
 // Componente del botón flotante de WhatsApp
-const PUBLIC_WSP_URL = import.meta.env.PUBLIC_WSP_URL;
-const { message } = Astro.props as { message?: string };
+const { message, wspUrl } = Astro.props as { message?: string, wspUrl?: string };
+const baseWsp = wspUrl || import.meta.env.PUBLIC_WSP_URL;
 const href = message && typeof message === 'string' && message.length > 0
-  ? `${PUBLIC_WSP_URL}${PUBLIC_WSP_URL.includes('?') ? '&' : '?'}text=${encodeURIComponent(message)}`
-  : PUBLIC_WSP_URL;
+  ? `${baseWsp}${baseWsp.includes('?') ? '&' : '?'}text=${encodeURIComponent(message)}`
+  : baseWsp;
 ---
 
 <!-- Botón flotante de WhatsApp -->
