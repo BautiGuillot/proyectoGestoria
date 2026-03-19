@@ -8,12 +8,11 @@ const navLinks = [
     select: true,
     submenu: [
       { name: 'Gestoría', href: '/gestoria' },
-      { name: 'Multas', href: '/multas' }
+      { name: 'Multas', href: '/reduccion-multas-provincia-bsas' }
     ]
   },
-  { name: 'Blog', href: '/blog' },
   { name: 'Contacto', href: '/#ContactFormV2' },
-  { name: 'Gestoría', href: '/gestoria' }, 
+  { name: 'Blog', href: '/blog' },
 ];
 const { wspUrl } = Astro.props as { wspUrl?: string };
 const PUBLIC_WSP_URL = wspUrl || import.meta.env.PUBLIC_WSP_URL;

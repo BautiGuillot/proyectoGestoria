@@ -8,12 +8,13 @@ import Layout from '../layouts/Layout.astro';
 
 const DEFAULT_MULTAS_MSG = 'Hola, me estoy comunicando para reducir una multa';
 const MULTAS_MSG = import.meta.env.WSP_MSG_MULTAS ?? DEFAULT_MULTAS_MSG;
+const HOME_WSP_URL = "https://wa.me/5492364310487";
 ---
 
-<Layout title="Inicio" multasMsg={MULTAS_MSG}>
+<Layout title="Inicio" multasMsg={MULTAS_MSG} wspUrl={HOME_WSP_URL}>
 
   <section id="HeroSection">
-    <HeroSection />
+    <HeroSection wspUrl={HOME_WSP_URL} />
   </section>
 
   <section id="AboutSectionV2">
